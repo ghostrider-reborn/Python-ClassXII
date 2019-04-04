@@ -1,5 +1,5 @@
 """
-    2D LISTS
+    2D LISTS (MATRICES)
 """
 
 def inputMatrix():
@@ -84,4 +84,3 @@ def transposeMatrix(matrix):
 matrix = inputMatrix()
 printMatrix(matrix)
 printMatrix(transposeMatrix(matrix))
-

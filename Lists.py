@@ -1,24 +1,43 @@
+"""
+    1D List operations
+"""
+
 def linearSearch(lst, item):
-    ''' LINEAR SEARCH - search for an element by traversing through the list one by one
-        and return the posititon if found, else return False '''
-    
+    ''' Linear Search '''
     for i in range(0, len(lst)):
         if lst[i] == item: return i+1
     
     return False
 
-#lst = list(eval(input("Enter list as comma seperated numbers >> ")))
-#item = int(input("Enter element to search >> "))
-#search = linearSearch(lst, item)
+#pos = linearSearch(list(eval(input("Enter list as comma seperated numbers >> "))),
+#                   int(input("Enter element to search >> ")))
 
-#if search: print("Found element", item, "at index", search)
+#if search: print("Found given element at position", search)
 #else: print("Element", item, "not found")
 
-def bubbleSort(lst):
-    ''' BUBBLE SORT '''
+def binarySearch(lst, item):
+    ''' Binary Search '''
+    lower = 0
+    upper = len(lst)
     
+    while lower < upper:
+        mid_ele = (lower + upper) // 2
+        if lst[mid_ele] == item: return mid_ele + 1
+        elif lst[mid_ele] > item: upper = mid_ele
+        else: lower = mid_ele
+
+    return False
+        
+#pos = binarySearch(list(eval(input("Enter comma seperated numbers >> "))),
+#                   int(input("Enter item to search >> ")))
+
+#if pos: print("Found given element at position",  pos)
+#else: print("Given item not found!")
+
+def bubbleSort(lst):
+    ''' Bubble Sort '''
     for i in range(len(lst)):
-        for j in range(0, len(lst)-i-1):
+        for j in range(len(lst)-i-1):
             if lst[j] > lst[j+1]: lst[j], lst[j+1] = lst[j+1], lst[j]
 
     return lst
@@ -27,9 +46,8 @@ def bubbleSort(lst):
 #print("Sorted:", bubbleSort(lst))
 
 def insertElement(lst, element, pos):
-    ''' Insert a given element in a given list at a given posititon '''
-    
-    lst += [0]      # add an element 0 at the end of the list
+    ''' Insert a given element in a given list at a given posititon, in-place '''
+    lst += [0]
     index = pos-1
     
     for i in range(len(lst)-1, index, -1): lst[i] = lst[i-1]
@@ -44,7 +62,7 @@ def insertElement(lst, element, pos):
 
 def insertElementSorted(lst, element):
     ''' Insert a number in a sorted list in its correct posititon
-        so that the list still remains sorted '''
+        so that the list still remains sorted, in-place '''
     
     if element <= lst[0]: index = 0
     elif element >= lst[-1]: index = len(lst)
@@ -58,7 +76,7 @@ def insertElementSorted(lst, element):
 #                          int(input("Enter the element to insert >> "))))
 
 def deleteElement(lst, element):
-    ''' Delete a given element from a list '''
+    ''' Delete a given element from a list, in-place '''
     pos = linearSearch(lst, element)
     if not pos: return "Specified element does not exist in the given list !"
     
@@ -84,10 +102,12 @@ def selectionSort(lst):
 #print("Sorted:", selectionSort(list(eval(input('Enter comma separated numbers >> ')))))
 
 def swapHalfList(lst):
-    ''' Swap half parts of a given list containing even number of elements '''
+    ''' Swap 1st and 2nd half parts of a given list '''
     assert len(lst) % 2 == 0, "List should have even number of elements!"
+
     for i in range(len(lst)//2):
         lst[i], lst[len(lst)//2 + i] = lst[len(lst)//2 + i], lst[i]
+
     return lst
 
-print(swapHalfList([1,2,3,4,5,6,7]))
+#print(swapHalfList(list(eval(input("Enter list as comma-seperated numbers >> ")))))
