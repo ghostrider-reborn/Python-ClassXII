@@ -3,31 +3,36 @@
 """
 
 # Initialize an empty stack as a python list
-top = -1
+top = None
 stack = []
 
 def push(stack, element):
     ''' Push an element into a stack '''
     global top
     stack.append(element)
-    top += 1
+    top = len(stack) - 1
 
 def pop(stack):
     ''' Remove the top element of the stack '''
     global top
-    if top == -1: return False
+    if top is None: return False
+    
     stack.pop()
-    top -= 1
-    return True
+    if stack == []: top = None
+    else: top = len(stack) - 1
 
 def peek(stack):
     ''' Return the top element of the stack '''
     global top
-    return stack[top]
+    return stack[top] if top is None else "Underflow error!"
 
 def display(stack):
     ''' Display the contents of the stack '''
     global top
+    if top is None:
+        print("Underflow error!")
+        return
+    
     print(stack[top], "<- top")
     for i in reversed(stack[:top]): print(i)
 
