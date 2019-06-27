@@ -1,0 +1,235 @@
+Enter password: ****
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 4
+Server version: 5.7.26-log MySQL Community Server (GPL)
+
+Copyright (c) 2000, 2019, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> use hackermann;
+Database changed
+mysql> list tables;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'list tables' at line 1
+mysql> show tables;
++----------------------+
+| Tables_in_hackermann |
++----------------------+
+| lmao                 |
++----------------------+
+1 row in set (0.00 sec)
+
+mysql> delete lmao;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql> drop lmao;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'lmao' at line 1
+mysql> drop * from lmoa;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from lmoa' at line 1
+mysql> drop * from lmo^C
+mysql> drop table lmao;
+Query OK, 0 rows affected (0.25 sec)
+
+mysql> create table dept (^C
+mysql> drop table lmao;^C
+mysql> create table worker (wno int, name varchar(30), doj date; dob date; gender varchar(6), dcode int)
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dob date' at line 1
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'gender varchar(6), dcode int)' at line 1
+mysql> create table worker (wno int, name varchar(30), doj date; dob date, gender varchar(6), dcode int);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'dob date, gender varchar(6), dcode int)' at line 1
+mysql> create table worker (wno int, name varchar(30), doj date, dob date, gender varchar(6), dcode int);
+Query OK, 0 rows affected (0.23 sec)
+
+mysql> create^C
+mysql> drop table workerl
+    -> ^C
+mysql> drop table worker;
+Query OK, 0 rows affected (0.14 sec)
+
+mysql> create table dept(dcode varchar(4),
+    -> ^C
+mysql> create table dept
+    -> (dcode^C
+mysql> create table dept(
+    -> dcode varchar(4) primary key,
+    -> department varchar(20) not null,
+    -> city varchar(20)
+    -> );
+Query OK, 0 rows affected (0.28 sec)
+
+mysql> create table worker(
+    -> wno int primary key,
+    -> name varchar(20),
+    -> doj date,
+    -> dob date,
+    -> gender varchar(6) default female,
+    -> dcode varchar(4),
+    -> foreign key dcode references dept(dcode)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'female,
+dcode varchar(4),
+foreign key dcode references dept(dcode)
+)' at line 6
+mysql> create table dept(dcode varchar(4),
+    -> ^C
+mysql> create table worker(
+    -> wno int primary key,
+    -> name varchar(20),
+    -> doj date,
+    -> dob date,
+    -> gender varchar(6) default 'female',
+    -> dcode varchar(4),
+    ->
+    -> foreign key dcode references dept(dcode)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'references dept(dcode)
+)' at line 9
+mysql> create table worker(
+    -> wno int primary key,
+    -> name varchar(20),
+    -> doj date,
+    -> dob date,
+    -> gender varchar(6) default 'female',
+    -> dcode varchar(4),
+    -> foreign key dcode references dept(dcode)
+    -> );
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'references dept(dcode)
+)' at line 8
+mysql> create table worker(
+    -> wno int primary key,
+    -> name varchar(20),
+    -> doj date,
+    -> dob date,
+    -> gender varchar(6) default 'female',
+    -> dcode varchar(4),
+    -> foreign key (dcode) references dept(dcode)
+    -> );
+Query OK, 0 rows affected (0.42 sec)
+
+mysql> insert into dept values
+    -> (
+    -> ^C
+mysql> insert into dept values
+    -> ('D01', 'media', 'delhi'),
+    -> ('D02', 'marketing', 'delhi'),
+    -> ('D03', 'infrastructure', 'mumbai'),
+    -> ('D04', 'finance', 'kolkata'),
+    -> ('D05', 'human resource', 'mumbai');
+Query OK, 5 rows affected (0.11 sec)
+Records: 5  Duplicates: 0  Warnings: 0
+
+mysql> insert into worker values values
+    -> (1001', 'George K', 2013-09-02, 1991-09-01, 'Male', 'D01'),
+    '> ^C
+mysql> insert into worker values values
+    -> (1001, 'George K', 2013-09-02, 1991-09-01, 'Male', 'D01'),
+    -> (1002, 'Ryma Sen', 2012-12-11, 1990-12-15, 'Female', 'D03'),
+    -> (1003, 'Mohitesh', 2013-02-03, 1987-09-04, 'Male
+    '> ^C
+mysql> insert into worker values values
+    -> (1001, 'George K', 2013-09-02, 1991-09-01, 'Male', 'D01'),
+    -> (1002, 'Ryma Sen', 2012-12-11, 1990-12-15, 'Female', 'D03'),
+    -> (1003, 'Mohitesh', 2013-02-03, 1987-09-04, 'Male', ^C
+mysql> insert into worker values
+    -> (1001, 'George K', 2013-09-02, 1991-09-01, 'Male', 'D01'),
+    -> (1002, 'Ryma Sen', 2012-12-11, 1990-12-15, 'Female', 'D03'),
+    -> (1003, 'Mohitesh', 2013-02-03, 1987-09-04, 'Male', 'D05'),
+    -> (1007, 'Sanil Jha', 2014-01-17, 1984-10-19, 'Male', 'D04'),
+    -> (1004, 'Manila Sahai', 2012-12-09, 1986-11-14, 'Female', 'D02'),
+    -> (1005, 'R Sahay', 2013-11-18, 1987-03-31, 'Male', 'D02'),
+    -> (1006, 'Jaya Priya', 2014-06-09, 1985-06-03, 'Female', 'D05');
+ERROR 1292 (22007): Incorrect date value: '2002' for column 'doj' at row 1
+mysql> insert into worker values
+    -> (1001, 'George K', '2013-09-02', '1991-09-01', 'Male', 'D01'),
+    -> (1002, 'Ryma Sen', '2012-12-11', '1990-12-15', 'Female', 'D03'),
+    -> (1003, 'Mohitesh', '2013-02-03', '1987-09-04', 'Male', 'D05'),
+    -> (1007, 'Sanil Jha', '2014-01-17', '1984-10-19', 'Male', 'D04'),
+    -> (1004, 'Manila Sahai', '2012-12-09', '1986-11-14', 'Female', 'D02'),
+    -> (1005, 'R Sahay', '2013-11-18', '1987-03-31', 'Male', 'D02'),
+    -> (1006, 'Jaya Priya', 2014-06-09, 1985-06-03, 'Female', 'D05');
+ERROR 1292 (22007): Incorrect date value: '1999' for column 'doj' at row 7
+mysql> insert into worker values
+    -> (1001, 'George K', 2013-09-02, 1991-09-01, 'Male', 'D01'),
+    -> (1002, 'Ryma Sen', 2012-12-11, 1990-12-15, 'Female', 'D03'),
+    -> (1003, 'Mohitesh', 2013-02-03, 1987-09-04, 'Male', 'D05'),
+    -> (1007, 'Sanil Jha', 2014-01-17, 1984-10-19, 'Male', 'D04'),
+    -> (1004, 'Manila Sahai', 2012-12-09, 1986-11-14, 'Female', 'D02'),
+    -> (1005, 'R Sahay', 2013-11-18, 1987-03-31, 'Male', 'D02'),
+    -> (1006, 'Jaya Priya', '2014-06-09', '1985-06-03', 'Female', 'D05');
+ERROR 1292 (22007): Incorrect date value: '2002' for column 'doj' at row 1
+mysql> insert into worker values
+    -> (1001, 'George K', '2013-09-02', '1991-09-01', 'Male', 'D01'),
+    -> (1002, 'Ryma Sen', '2012-12-11', '1990-12-15', 'Female', 'D03'),
+    -> (1003, 'Mohitesh', '2013-02-03', '1987-09-04', 'Male', 'D05'),
+    -> (1007, 'Sanil Jha', '2014-01-17', '1984-10-19', 'Male', 'D04'),
+    -> (1004, 'Manila Sahai', '2012-12-09', '1986-11-14', 'Female', 'D02'),
+    -> (1005, 'R Sahay', '2013-11-18', '1987-03-31', 'Male', 'D02'),
+    -> (1006, 'Jaya Priya', '2014-06-09', '1985-06-03', 'Female', 'D05');
+Query OK, 7 rows affected (0.08 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> select wno, wname from worker where ^C
+mysql> ((^C
+mysql> select wno, wname from worker where date between '1987-01-01' and '1991-12-01';
+ERROR 1054 (42S22): Unknown column 'wname' in 'field list'
+mysql> select wno, name from worker where date between '1987-01-01' and '1991-12-01';
+ERROR 1054 (42S22): Unknown column 'date' in 'where clause'
+mysql> select wno, name from worker where dob between '1987-01-01' and '1991-12-01';
++------+----------+
+| wno  | name     |
++------+----------+
+| 1001 | George K |
+| 1002 | Ryma Sen |
+| 1003 | Mohitesh |
+| 1005 | R Sahay  |
++------+----------+
+4 rows in set (0.06 sec)
+
+mysql> select ^C
+mysql> desc worker;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| wno    | int(11)     | NO   | PRI | NULL    |       |
+| name   | varchar(20) | YES  |     | NULL    |       |
+| doj    | date        | YES  |     | NULL    |       |
+| dob    | date        | YES  |     | NULL    |       |
+| gender | varchar(6)  | YES  |     | female  |       |
+| dcode  | varchar(4)  | YES  | MUL | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+6 rows in set (0.05 sec)
+
+mysql> select count(*) as
+    -> ^C
+mysql> select count(*) as 'male workers' from worker where doj > '2013-11-25' and gender = 'Male';
++--------------+
+| male workers |
++--------------+
+|            1 |
++--------------+
+1 row in set (0.06 sec)
+
+mysql> select * from worker where doj = max(doj)
+    -> ;
+ERROR 1111 (HY000): Invalid use of group function
+mysql> select max(doj) from worker
+    -> ;
++------------+
+| max(doj)   |
++------------+
+| 2014-06-09 |
++------------+
+1 row in set (0.00 sec)
+
+mysql> select count(select * from worker where gender = 'male') as 'male', count(select * from worker where gender = 'female');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from worker where gender = 'male') as 'male', count(select * from worke' at line 1
+mysql> select count(select * from worker where gender = 'Male') as 'male', count(select * from worker where gender = 'Female');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'select * from worker where gender = 'Male') as 'male', count(select * from worke' at line 1
+mysql> select count*'gende^C
+mysql>
